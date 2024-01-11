@@ -1,19 +1,12 @@
-build:
-	rm -f application.exe
-	g++ -std=c++20 -Wall application.cpp dist.cpp osm.cpp tinyxml2.cpp -o application.exe
-
-run:
-	./application.exe
-
-buildtest:
-	rm -f testing.exe
-	g++ -std=c++20 -Wall testing.cpp -o testing.exe
+test:
+	rm -f tests.exe
+	g++ -Wall -g -std=c++20 tests.cpp -o tests.exe
 
 runtest:
-	./testing.exe
+	./tests.exe
 
 clean:
-	rm -f application.exe	
+	rm -f tests.exe
 
 valgrind:
-	valgrind --tool=memcheck --leak-check=yes ./application.exe
+	valgrind --tool=memcheck --leak-check=full --track-origins=yes  ./tests.exe
